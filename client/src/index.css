@@ -1,0 +1,628 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#root {
+  width: 100%;
+}
+
+body {
+  display: flex;
+  min-height: 100dvh;
+  height: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(24 24 27 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  margin: 0;
+  padding: 0; 
+  scroll-behavior: smooth;
+  
+}
+
+
+.content {
+ 
+margin-left: 1rem;
+margin-right: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.top-navbar-desktop {
+  @apply flex w-full gap-4 text-slate-900 dark:text-white text-xl font-medium tracking-tight
+
+}
+
+
+
+.hamburger-nav {
+  display: none;
+  width: 100%;
+  flex-direction: row;
+  position: fixed;
+  z-index: 100;
+  background-color: #0F0F0F;
+
+
+  
+
+}
+.hamburger-nav-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.hamburger-nav-ul {
+  @apply flex flex-col w-full gap-3 justify-center text-slate-900 dark:text-white text-xl font-medium tracking-tight
+}
+
+.hamburger-nav-ul li {
+  @apply w-full flex justify-center
+}
+
+
+
+
+@media (width < 800px) { 
+  .div-navbar-desktop {
+    display: none;
+  }
+  .hamburger-nav {
+    display: flex;
+    justify-content: flex-end;
+  }
+ }
+
+
+.box {
+  display: flex;
+  width: 100%;
+  margin-top: 1.5rem;
+  position: relative;
+  background-color: rgb(39 39 42 / 0.5);
+  border-radius: 1rem/* 16px */;
+  padding-left: 1rem/* 16px */;
+  padding-right: 1rem/* 16px */;
+  padding-top: 0.5rem/* 8px */;
+  padding-bottom: 0.5rem/* 8px */;
+  
+}
+
+@media (width < 380px) { 
+  .box {
+    /* display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr)); */
+    flex-direction: column;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    
+  }
+  .box h1 {
+    text-align: center;
+  }
+  .box-div {
+    padding: 0px;
+  }
+  
+ }
+
+.box p {
+  font-size : clamp(0.85rem, 1.85vw, 1.25rem);
+}
+
+.box h1 {
+  font-size : clamp(1.25rem, 3.5vw, 1.75rem);
+  @apply  underline underline-offset-auto 
+}
+.box h2 {
+  font-size : clamp(1rem, 2.5vw, 1.5rem);
+  display: inline;
+  @apply  underline underline-offset-auto
+}
+
+.image-container {
+  display: inline-block;
+  vertical-align: middle; /* Aligns the image vertically with text */
+  margin-left: 10px; /* Adjust spacing between text and image */
+}
+
+.image-container img {
+  max-width: 200px; /* Set max-width to control image size */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* image carousel */
+.parallax {
+  
+  display: flex;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.parallax .scroller {
+  display: flex;
+}
+
+.scroller img {
+  max-width: 200px;
+  width: 100%;
+  min-width: 100px;
+  height: auto;
+  
+   /* Prevent images from shrinking */
+}
+.parallax div {
+  display: flex;
+  margin-right: 30px;
+}
+
+
+
+
+/* font size*/
+.normal-text {
+  font-size : clamp(2rem, 10vw, 5rem);
+}
+
+h1 {
+  font-size : clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-decoration-line: underline;
+}
+
+h2 {
+  font-size : clamp(0.75rem, 3vw, 2rem);
+  font-weight: 500;
+  text-decoration-line: underline;
+}
+
+h3 {
+  font-size : clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  text-decoration-line: underline;
+}
+
+
+.showproject {
+  width: 100%;
+}
+.showproject p {
+  font-size : clamp(1rem, 1vw, 2rem);
+}
+
+.showproject-img img {
+  max-width: 200px;
+  width: 100%;
+  min-width: 100px;
+  height: auto;
+}
+
+
+
+/* Modal */
+.modal {
+  
+  position: fixed; /* Stay in place */
+  z-index: 50; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  
+}
+
+/* Start Modal Content Login*/
+.modal-content-login {  
+  height: auto;
+  max-width: 34rem;
+  background-color: #0F0F0F;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  
+}
+/* End Modal Content Login*/
+
+/* Start Modal Content Signup*/
+.modal-content-signup {  
+  max-height: 32rem;
+  max-width: 34rem;
+  background-color: #0F0F0F;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  
+}
+/* End Modal Content Signup*/
+
+.span-modal-portfolio {
+  @apply font-bold underline underline-offset-2 text-red-500 cursor-pointer
+}
+  
+
+/* Start Image Modal from Portfolio_2 */
+.image-modal-portfolio {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+  
+}
+.image-modal-portfolio img {
+  width: 80%;
+  max-width: 100%;
+  max-width: 700px;
+  margin: auto;
+  background-color: rgba(23, 23, 23, 0.9);  /* Black w/ opacity */
+}
+
+.modal-portfolio-close-button {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  padding-top: 20px;
+}
+.modal-portfolio-close-button:hover {
+  cursor: pointer;
+}
+
+/* End Image Modal from Portfolio_2 */
+
+/* Start The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  background-color: whitesmoke;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* End The Close Button */
+/* Start Fade In Animation*/
+.text-welcome {
+  position:relative;
+  overflow:hidden;
+  margin:0 auto;
+  
+  font-size : clamp(2rem, 10vw, 5rem);
+}
+.text-info {
+  
+  /* background-color: white; */
+  overflow:hidden;
+  font-size : clamp(0.5rem, 5vw, 2rem); 
+  
+}
+
+.spinner-border {
+  display: inline-block;
+  width: 7rem;
+  height: 7rem;
+  border-width: 8px;
+  border-radius: 9999px;
+}
+
+.loading-spinner-position {
+  left: 0; 
+  right: 0;
+  top: 50%;
+  margin-left: auto; 
+  margin-right: auto; 
+  display: flex;
+  justify-content: center;
+  position: absolute;
+
+}
+
+/* for easier debug */
+
+/* * {
+  border: 1px solid red;
+} */
+
+/* custom media query in js file [@media(max-width:400px)]:bg-white */
+
+/* custom font size clamp in js file -   [font-size:_clamp(1.25rem,5vw,2.25rem)] */
+
+.btn {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  @apply font-bold fadein-top bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full mt-4 
+}
+
+
+
+.fadingEffect {
+  position:absolute;
+  top:0; bottom:0; right:0;
+  width:100%;
+  background:#0F0F0F;
+  /*background:#0F0F0F;*/
+  -moz-animation: showHide 5s ease-in alternate ; /* Firefox */
+  -webkit-animation: showHide 5s ease-in alternate ; /* Safari and Chrome */
+  -ms-animation: showHide 5s ease-in alternate ; /* IE10 */
+  -o-animation: showHide 5s ease-in alternate ; /* Opera */
+  animation: showHide 5s ease-in alternate ;
+  animation-fill-mode: forwards;
+  
+  
+}
+@-webkit-keyframes showHide { /* Chrome, Safari */
+  0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:0%;}
+}
+@-moz-keyframes showHide { /* FF */
+  0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:0%;}
+}
+@-ms-keyframes showHide { /* IE10 */
+  0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:0%;}
+}
+@-o-keyframes showHide { /* Opera */
+  0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:0%;}
+}
+@keyframes showHide {
+  0% {width:100%}
+  40% {width:0%}
+  60% {width:0%;}
+  100% {width:0%;}
+}
+
+/* End Fade In Animation*/
+
+/* Start Arrow Fade In Left Animation*/
+.fadein-left-arrow {
+  animation:animateleft 2.2s ease-in alternate infinite;
+}
+@keyframes animateleft{
+  0%{left:-100px;opacity:0} 
+  70%{left:35px;opacity:1}
+  100%{left:35px;opacity:1}
+}
+
+/* End Arrow Fade In Left Animation*/
+
+/* Start Arrow Fade In Up Animation*/
+.fadein-up-arrow {
+  opacity: 0;
+  position:relative;
+  animation:animateup 2.5s ease-in alternate infinite;
+  
+  
+}
+@keyframes animateup{
+  0%{left:25px;bottom:0px;opacity:0} 
+  70%{left:25px;bottom:70px;opacity:1}
+  100%{left:25px;bottom:70px;opacity:1}
+}
+
+
+
+
+/* End Arrow Fade In Up Animation*/
+
+/* Start Profile_pic Fade In Bottom Animation*/
+.fadein-bottom {
+  position:relative;
+  animation:animatebottom 1.3s;
+  animation-fill-mode: both;
+}
+@keyframes animatebottom{
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to { opacity: 1 }
+}
+
+/* End Profile_pic Fade In Bottom Animation*/
+
+.fadein-top {
+  opacity: 0;
+  position:relative;
+  animation:animatetop 0.4s;
+  animation-fill-mode: both;
+}
+@keyframes animatetop{
+  0% { 
+    top:-300px;opacity:0
+  } 
+  100% { top:0;opacity:1 }
+}
+
+.fadein-zoom{
+  opacity: 0;
+  animation:animatezoom 0.6s;
+  animation-fill-mode: both;
+}
+@keyframes animatezoom{
+  from{
+    transform:scale(0)
+  } 
+  to{
+    opacity: 1;
+    transform:scale(1)
+  }
+  }
+
+.showProj{
+  display:hidden;
+}
+
+.edit-content {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  
+}
+.edit-button-desktop {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 0.5rem;
+  width: 50%;
+}
+.edit-button-mobile {
+  display: none;
+  
+  
+  padding-top: 0.5rem;
+  width: 50%;
+}
+
+.date-font {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+}
+
+
+@media (width < 1200px) {
+  .edit-content {
+    flex-direction: column;
+  }
+  .edit-button-desktop {
+    display: none;
+  }
+  .edit-button-mobile {
+    display: flex;
+  }
+
+}
+
+.todolist-sidebar-desktop {
+  width: 100%;
+  max-width: 18rem;
+  --tw-bg-opacity: 0.25;
+  background-color: rgb(85 83 83 / var(--tw-bg-opacity));
+  margin-right: 0.5rem;
+  
+}
+
+.todolist-sidebar-mobile {
+  display: none;
+  width: 100%;
+  max-width: 5rem;
+  margin-right: 0.5rem
+  
+}
+
+@media (width < 800px) {
+  .todolist-sidebar-desktop{
+    display: none;
+  }
+  .todolist-sidebar-mobile{
+    display: block;
+  }
+}
+
+@media (width < 580px) {
+  .date-time-mobile {
+    flex-direction: column;
+   
+  }
+  
+}
+
+
+
+
+
+@layer components{
+  .TitleofFunction{
+    @apply text-2xl font-bold underline underline-offset-8
+  }
+  .EditForm{
+    @apply text-2xl font-bold underline underline-offset-8
+  }
+  .inputTodoName{
+    @apply bg-zinc-800 rounded-lg outline-0 pl-1.5
+  }
+  .inputTodoDetails{
+    @apply bg-zinc-800 rounded-lg outline-0 pl-1.5 
+  }
+  .btnGray{
+   @apply text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700
+  }
+
+  .form-col{
+    @apply flex flex-col mt-1
+  }
+
+  .form-label{
+    @apply text-base font-bold
+  }
+
+  .form-button-login {
+    @apply bg-zinc-700 hover:bg-zinc-900 py-2 px-4 rounded font-bold
+  }
+
+  .form-button-signup {
+    @apply bg-sky-500 hover:bg-sky-700 py-2 px-4 rounded font-bold
+  }
+  
+
+  .form-input {
+    @apply bg-zinc-700 focus:bg-neutral-900 mt-2 rounded pl-2 w-full
+  }
+  
+  .form-input-validation {
+    @apply text-base text-rose-500
+  }
+  
+  
+  .item-title-sidebar {
+    @apply font-bold text-xl 
+    
+  }
+
+  .item-title-body {
+    @apply font-bold text-4xl 
+    
+  }
+
+  .item-details {
+    @apply text-lg mt-2
+    
+  }
+
+   .ThreeDotsDropdown li { 
+    @apply pl-2 hover:bg-stone-600 h-7
+
+  }
+}
