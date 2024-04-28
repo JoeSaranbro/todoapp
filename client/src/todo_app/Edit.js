@@ -11,14 +11,8 @@ dayjs.extend(relativeTime)
 
 const Edit = ({ currentTodo , data, setData , setEditing}) => {
 
-
-
-
   const [updateInfo, setUpdateInfo] = useState(currentTodo)
   const dispatch = useDispatch()
-  
-  
-
   
   const RemainingTime = () => {
     const [timeNow, setTimeNow] = useState(new Date())
@@ -29,36 +23,41 @@ const Edit = ({ currentTodo , data, setData , setEditing}) => {
         clearInterval(interval);
       };
     },[])
-    
-    //const timeNow = new Date()
-
-    const start = dayjs(updateInfo.date_start);
-    const end = dayjs(updateInfo.date_end)
-
    
-    const date_time_project_duration = dayjs.duration(end.diff(start));
-    const date_time_remaining = dayjs.duration(end.diff(timeNow));
+    const startDate = new Date(updateInfo.date_start);
+    const endDate = new Date(updateInfo.date_end); 
+
+    const timeDifference__fromStart = endDate - startDate;
+    const timeDifference__fromNow = endDate - timeNow;
     
-    const date_time_project_duration_formatted = date_time_project_duration.format('D')+ " Days " +  date_time_project_duration.format('H') + " Hours "+ date_time_project_duration.format('m') +" Minutes" ;
-    const date_time_remaining_formatted = date_time_remaining.format('D')+ " Days " +  date_time_remaining.format('H') + " Hours "+ date_time_remaining.format('m') +" Minutes left";
+
+    
+    const days_fromStart = Math.floor(timeDifference__fromStart / (1000 * 60 * 60 * 24));
+    const hours_fromStart = Math.floor((timeDifference__fromStart % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes_fromStart = Math.floor((timeDifference__fromStart % (1000 * 60 * 60)) / (1000 * 60));
+    
+    const days_fromNow = Math.floor(timeDifference__fromNow / (1000 * 60 * 60 * 24));
+    const hours_fromNow = Math.floor((timeDifference__fromNow % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes_fromNow = Math.floor((timeDifference__fromNow % (1000 * 60 * 60)) / (1000 * 60));
+
+    
+
+    
+    const date_time_project_duration_formatted = days_fromStart + " Days " +  hours_fromStart + " Hours "+ minutes_fromStart +" Minutes" ;
+    const date_time_remaining_formatted = days_fromNow + " Days " +  hours_fromNow + " Hours "+ minutes_fromNow +" Minutes left";
     
 
     return(
       <div>
         <div><p className="text-xl font-bold">Todo Duration</p> { updateInfo.date_end ? date_time_project_duration_formatted: null }</div>
         <div className="mt-4"> <p className="text-xl font-bold">Remaining Time From Now  </p> {updateInfo.date_end ? date_time_remaining_formatted :null}  </div>
-
+        
         
       </div>
     )
   }
   
-    
- 
-
-  
   const csrf = localStorage.getItem('csrfToken');
-
   const customHeaders = {
     'x-csrf-token': csrf,
     
@@ -70,9 +69,6 @@ const Edit = ({ currentTodo , data, setData , setEditing}) => {
     withCredentials: true, // Set withCredentials to true
   };
  
-  
-  
-  
   const handleUpdate = async (e) => {
     
     //convert 2023-11-24T23:05:00.000Z to 2023-11-25T06:05 << the correct timestamp pattern to sql
@@ -86,26 +82,18 @@ const Edit = ({ currentTodo , data, setData , setEditing}) => {
     } else {
       try {
         await axios.put(`${process.env.REACT_APP_backend_URL}/todo_app/update_todo/` + currentTodo.todo_id, update_data , config);
-        
         setData(prev => prev.map(item => item.todo_id === currentTodo.todo_id ?  update_data : item )) 
         dispatch(updateTodo(update_data))
         alert("Updated Successfully!")
         
       } catch (error) {
-        
         console.log("update err", error)
-        
         alert("There is an error, please refresh the page!")
       }
       setEditing(false)
-      
-      
     }
-
   }
   
-  
-    
     if (currentTodo) {
         return(
           <div className="item w-full flex gap-4 " key={currentTodo.todo_id}>
@@ -119,8 +107,6 @@ const Edit = ({ currentTodo , data, setData , setEditing}) => {
                           onChange={(e)=> setUpdateInfo({...updateInfo,title: e.target.value})}
                           className="form-input w-full h-full" 
                           maxLength="30" />
-                          
-                          
                       </div>
                       <div className="item-details ">
                           
