@@ -375,7 +375,7 @@ const regexTest = async () => {
             data-context="signin"
             data-ux_mode="popup"
             data-callback="handleCallbackGoogleResponse"
-            data-login_uri="http://localhost:3000"
+            data-login_uri="https://joesaranbro-todoapp.vercel.app"
             data-auto_prompt="false"
             className='pt-2'
             >
