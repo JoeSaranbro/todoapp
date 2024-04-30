@@ -93,7 +93,7 @@ const Portfolio_2 = () => {
                   >
                     Oracle Netsuite
                   </span>{" "} to support and
-                  solve customer's issue. Create a PDF bill (like Invoice bill, Purchase Order bill, etc.) from user's requirement using HTML and CSS {" "}
+                  solve customer's issue. Create a PDF bill (like Invoice bill, Purchase Order bill, etc.) from user's requirement using HTML and CSS. {" "}
                   
                   
                   {isModalOpen && (
@@ -124,7 +124,7 @@ const Portfolio_2 = () => {
                   out to be successfully, so I decided to start a new challenge
                   as a web-developer.
                   <br /> <br />I have an application which I made it's called
-                  Todo-list web application which is hosting on vercel.com and
+                  Todo-list web application with a responsive design which is hosted on vercel.com and
                   my backend{" "}
                   <span
                     onClick={() => handleClick(expressjs_logo)}
@@ -132,7 +132,7 @@ const Portfolio_2 = () => {
                   >
                     Express.js
                   </span>{" "}
-                  is hosting on{" "}
+                   is hosted on{" "}
                   <span
                     onClick={() => handleClick(aws_ec2_logo)}
                     className="span-modal-portfolio"
